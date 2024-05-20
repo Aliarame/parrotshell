@@ -1,0 +1,5 @@
+#ignored
+testfolder/*
+
+#exception
+!testfolder/README.md
