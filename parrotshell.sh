@@ -50,5 +50,12 @@ function moving_parrot() {
   done
 }
 
-moving_parrot
+case ${1} in
+  1)
+    printf "placeholder\n"
+    ;;
+  *)
+    moving_parrot
+    ;;
+esac
 
