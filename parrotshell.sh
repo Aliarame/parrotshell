@@ -13,6 +13,21 @@ colorsTerminal=(
 noColor='\033[0m'  #No Color
 numColors=${#colorsTerminal[@]} #7 colors
 
+function set_online_frames(){
+  onlineFrames=(
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/0.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/1.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/2.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/3.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/4.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/5.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/6.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/7.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/8.txt)"
+    "$(curl -sL https://raw.githubusercontent.com/Aliarame/parrotshell/main/frames/9.txt)"
+  )
+}
+
 #Write "parrot" with colors from the terminal while moving from left to right
 #It's only a glimpse of the script that will come later with the ascii
 function moving_parrot() {
@@ -50,9 +65,36 @@ function moving_parrot() {
   done
 }
 
+function online_parrot() {
+
+  set_online_frames #get the frames online once
+  theColor=0
+  theLoop=1
+  interval=0.070 #70ms in parrot.live & 75ms in terminal-parrot
+  i=0
+  
+  while [ "$theLoop" -eq 1 ]; do
+
+    printf "\033[2J\033[3J\033[H" #Clear the terminal
+    printf "${colorsTerminal[$theColor]}" #Set the color to use for the print
+    printf "${onlineFrames[$i]}" #Print the frame
+    printf "${noColor}" #Keep the cursor with no color
+
+    #Loop colors and frames
+    if [ "$theColor" -ge $(($numColors-1)) ]; then theColor=0; else theColor=$(($theColor+1)); fi
+    if [ "$i" -ge 9 ]; then i=0; else i=$((i+1)); fi
+
+    sleep $interval 
+
+  done
+}
+
 case ${1} in
   1)
     printf "placeholder\n"
+    ;;
+  2)
+    online_parrot
     ;;
   *)
     moving_parrot
