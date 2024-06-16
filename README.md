@@ -7,9 +7,9 @@ Aims to achieve the same goal as [`parrot.live`](https://github.com/hugomd/parro
   
 *Still a WIP (Right now write "parrot" using colors from the terminal while moving from left to right)*  
   
-Run it in one command without any download (Please review the script before running it) :   
+Run it in one command without any download (Please [review the script](https://github.com/Aliarame/parrotshell/blob/main/parrotshell.sh) before running it) :   
 ```
-bash <(curl -L https://raw.githubusercontent.com/Aliarame/parrotshell/main/parrotshell.sh)
+bash <(curl -sSL https://raw.githubusercontent.com/Aliarame/parrotshell/main/parrotshell.sh)
 ```
   
 ## Credits  
