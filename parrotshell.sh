@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 
+#Define colors variables:
+colorsTerminal=(
+  '\033[0;31m'  #Red
+  '\033[0;32m'  #Green
+  '\033[0;33m'  #Yellow
+  '\033[0;34m'  #Blue
+  '\033[0;35m'  #Magenta
+  '\033[0;36m'  #Cyan
+  '\033[0;37m'  #White
+)
+noColor='\033[0m'  #No Color
+numColors=${#colorsTerminal[@]} #7 colors
+
 #Write "parrot" with colors from the terminal while moving from left to right
 #It's only a glimpse of the script that will come later with the ascii
 function moving_parrot() {
-
-  #Define colors variables:
-  colorsTerminal=(
-    '\033[0;31m'  #Red
-    '\033[0;32m'  #Green
-    '\033[0;33m'  #Yellow
-    '\033[0;34m'  #Blue
-    '\033[0;35m'  #Magenta
-    '\033[0;36m'  #Cyan
-    '\033[0;37m'  #White
-  )
-  noColor='\033[0m'  #No Color
-  numColors=${#colorsTerminal[@]} #7 colors
 
   #Terminal size (width and height)
   terminalWidth=$(tput cols)
