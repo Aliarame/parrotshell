@@ -28,9 +28,14 @@ function set_online_frames(){
   )
 }
 
+function print_help(){
+  printf "placeholder again\n"
+  
+}
+
 #Write "parrot" with colors from the terminal while moving from left to right
 #It's only a glimpse of the script that will come later with the ascii
-function moving_parrot() {
+function written_parrot() {
 
   #Terminal size (width and height)
   terminalWidth=$(tput cols)
@@ -93,11 +98,14 @@ case ${1} in
   1)
     printf "placeholder\n"
     ;;
-  2)
-    online_parrot
+  -h|--help)
+    print_help
+    ;;
+  -w|--written)
+    written_parrot
     ;;
   *)
-    moving_parrot
+    online_parrot
     ;;
 esac
 
